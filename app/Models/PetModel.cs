@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace Veterinary_Clinic.Models
 {
-    internal class PetModel
+    public class PetModel
     {
         [DisplayName("Pet Id")]
         [Required(ErrorMessage = "Pet Id is required")]
