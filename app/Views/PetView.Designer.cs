@@ -34,9 +34,9 @@
             tabControl1 = new TabControl();
             tabPagePetList = new TabPage();
             dataGridView1 = new DataGridView();
-            button4 = new Button();
-            button3 = new Button();
-            button2 = new Button();
+            buttonDelete = new Button();
+            buttonEdit = new Button();
+            buttonAdd = new Button();
             buttonSearch = new Button();
             textSearch = new TextBox();
             label2 = new Label();
@@ -45,8 +45,8 @@
             textPetColour = new TextBox();
             textPetName = new TextBox();
             textPetId = new TextBox();
-            button6 = new Button();
-            button5 = new Button();
+            buttonCancel = new Button();
+            buttonSave = new Button();
             label6 = new Label();
             label5 = new Label();
             label4 = new Label();
@@ -81,6 +81,7 @@
             // 
             // buttonClose
             // 
+            buttonClose.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             buttonClose.Font = new Font("Segoe UI", 12F);
             buttonClose.Location = new Point(748, 12);
             buttonClose.Name = "buttonClose";
@@ -104,9 +105,9 @@
             // 
             tabPagePetList.BackColor = Color.White;
             tabPagePetList.Controls.Add(dataGridView1);
-            tabPagePetList.Controls.Add(button4);
-            tabPagePetList.Controls.Add(button3);
-            tabPagePetList.Controls.Add(button2);
+            tabPagePetList.Controls.Add(buttonDelete);
+            tabPagePetList.Controls.Add(buttonEdit);
+            tabPagePetList.Controls.Add(buttonAdd);
             tabPagePetList.Controls.Add(buttonSearch);
             tabPagePetList.Controls.Add(textSearch);
             tabPagePetList.Controls.Add(label2);
@@ -119,6 +120,8 @@
             // 
             // dataGridView1
             // 
+            dataGridView1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.BackgroundColor = SystemColors.ButtonFace;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Location = new Point(34, 63);
@@ -126,35 +129,39 @@
             dataGridView1.Size = new Size(629, 275);
             dataGridView1.TabIndex = 6;
             // 
-            // button4
+            // buttonDelete
             // 
-            button4.Location = new Point(669, 121);
-            button4.Name = "button4";
-            button4.Size = new Size(75, 23);
-            button4.TabIndex = 5;
-            button4.Text = "Delete";
-            button4.UseVisualStyleBackColor = true;
+            buttonDelete.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            buttonDelete.Location = new Point(669, 121);
+            buttonDelete.Name = "buttonDelete";
+            buttonDelete.Size = new Size(75, 23);
+            buttonDelete.TabIndex = 5;
+            buttonDelete.Text = "Delete";
+            buttonDelete.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // buttonEdit
             // 
-            button3.Location = new Point(669, 92);
-            button3.Name = "button3";
-            button3.Size = new Size(75, 23);
-            button3.TabIndex = 4;
-            button3.Text = "Edit";
-            button3.UseVisualStyleBackColor = true;
+            buttonEdit.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            buttonEdit.Location = new Point(669, 92);
+            buttonEdit.Name = "buttonEdit";
+            buttonEdit.Size = new Size(75, 23);
+            buttonEdit.TabIndex = 4;
+            buttonEdit.Text = "Edit";
+            buttonEdit.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // buttonAdd
             // 
-            button2.Location = new Point(669, 63);
-            button2.Name = "button2";
-            button2.Size = new Size(75, 23);
-            button2.TabIndex = 3;
-            button2.Text = "Add new";
-            button2.UseVisualStyleBackColor = true;
+            buttonAdd.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            buttonAdd.Location = new Point(669, 63);
+            buttonAdd.Name = "buttonAdd";
+            buttonAdd.Size = new Size(75, 23);
+            buttonAdd.TabIndex = 3;
+            buttonAdd.Text = "Add new";
+            buttonAdd.UseVisualStyleBackColor = true;
             // 
             // buttonSearch
             // 
+            buttonSearch.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             buttonSearch.Location = new Point(588, 34);
             buttonSearch.Name = "buttonSearch";
             buttonSearch.Size = new Size(75, 23);
@@ -164,6 +171,7 @@
             // 
             // textSearch
             // 
+            textSearch.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             textSearch.Location = new Point(34, 34);
             textSearch.Name = "textSearch";
             textSearch.Size = new Size(548, 23);
@@ -184,8 +192,8 @@
             tabPagePetDetail.Controls.Add(textPetColour);
             tabPagePetDetail.Controls.Add(textPetName);
             tabPagePetDetail.Controls.Add(textPetId);
-            tabPagePetDetail.Controls.Add(button6);
-            tabPagePetDetail.Controls.Add(button5);
+            tabPagePetDetail.Controls.Add(buttonCancel);
+            tabPagePetDetail.Controls.Add(buttonSave);
             tabPagePetDetail.Controls.Add(label6);
             tabPagePetDetail.Controls.Add(label5);
             tabPagePetDetail.Controls.Add(label4);
@@ -223,26 +231,28 @@
             // 
             textPetId.Location = new Point(51, 57);
             textPetId.Name = "textPetId";
+            textPetId.ReadOnly = true;
             textPetId.Size = new Size(149, 23);
             textPetId.TabIndex = 6;
+            textPetId.Text = "0";
             // 
-            // button6
+            // buttonCancel
             // 
-            button6.Location = new Point(228, 239);
-            button6.Name = "button6";
-            button6.Size = new Size(176, 30);
-            button6.TabIndex = 5;
-            button6.Text = "Cancel";
-            button6.UseVisualStyleBackColor = true;
+            buttonCancel.Location = new Point(228, 239);
+            buttonCancel.Name = "buttonCancel";
+            buttonCancel.Size = new Size(176, 30);
+            buttonCancel.TabIndex = 5;
+            buttonCancel.Text = "Cancel";
+            buttonCancel.UseVisualStyleBackColor = true;
             // 
-            // button5
+            // buttonSave
             // 
-            button5.Location = new Point(51, 239);
-            button5.Name = "button5";
-            button5.Size = new Size(176, 30);
-            button5.TabIndex = 4;
-            button5.Text = "Save";
-            button5.UseVisualStyleBackColor = true;
+            buttonSave.Location = new Point(51, 239);
+            buttonSave.Name = "buttonSave";
+            buttonSave.Size = new Size(176, 30);
+            buttonSave.TabIndex = 4;
+            buttonSave.Text = "Save";
+            buttonSave.UseVisualStyleBackColor = true;
             // 
             // label6
             // 
@@ -306,9 +316,9 @@
         private Panel panel1;
         private TabControl tabControl1;
         private TabPage tabPagePetList;
-        private Button button4;
-        private Button button3;
-        private Button button2;
+        private Button buttonDelete;
+        private Button buttonEdit;
+        private Button buttonAdd;
         private Button buttonSearch;
         private TextBox textSearch;
         private Label label2;
@@ -318,8 +328,8 @@
         private TextBox textPetColour;
         private TextBox textPetName;
         private TextBox textPetId;
-        private Button button6;
-        private Button button5;
+        private Button buttonCancel;
+        private Button buttonSave;
         private Label label6;
         private Label label5;
         private Label label4;

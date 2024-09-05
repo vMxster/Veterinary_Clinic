@@ -1,4 +1,6 @@
-﻿namespace Veterinary_Clinic.Models
+﻿using Veterinary_Clinic.Models;
+
+namespace Veterinary_Clinic._Repositories
 {
     public interface IPetRepository
     {

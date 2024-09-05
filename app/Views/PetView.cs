@@ -2,6 +2,7 @@
 {
     public partial class PetView : Form, IPetView
     {
+        private static PetView? instance;
         public string PetId
         {
             get => textPetId.Text;
@@ -64,12 +65,73 @@
                 if (e.KeyCode == Keys.Enter)
                     SearchEvent?.Invoke(this, EventArgs.Empty);
             };
-            // Add other event associations here if needed
+            buttonAdd.Click += (s, e) =>
+            {
+                AddNewEvent?.Invoke(this, EventArgs.Empty);
+                tabControl1.TabPages.Remove(tabPagePetList);
+                tabControl1.TabPages.Add(tabPagePetDetail);
+                tabPagePetDetail.Text = "Add new Pet";
+            };
+            buttonEdit.Click += (s, e) =>
+            {
+                EditEvent?.Invoke(this, EventArgs.Empty);
+                tabControl1.TabPages.Remove(tabPagePetList);
+                tabControl1.TabPages.Add(tabPagePetDetail);
+                tabPagePetDetail.Text = "Edit Pet";
+            };
+            buttonSave.Click += (s, e) =>
+            {
+                SaveEvent?.Invoke(this, EventArgs.Empty);
+                if (IsSuccessful)
+                {
+                    tabControl1.TabPages.Remove(tabPagePetDetail);
+                    tabControl1.TabPages.Add(tabPagePetList);
+                }
+                MessageBox.Show(Message);
+            };
+            buttonCancel.Click += (s, e) =>
+            {
+                CancelEvent?.Invoke(this, EventArgs.Empty);
+                tabControl1.TabPages.Remove(tabPagePetDetail);
+                tabControl1.TabPages.Add(tabPagePetList);
+            };
+            buttonDelete.Click += (s, e) =>
+            {
+                var result = MessageBox.Show(
+                    "Are you sure you want to delete the selected pet?",
+                    "Warning!",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (result == DialogResult.Yes)
+                {
+                    DeleteEvent?.Invoke(this, EventArgs.Empty);
+                    MessageBox.Show(Message);
+                }
+            };
         }
 
         public void SetPetListBindingSource(BindingSource petList)
         {
             dataGridView1.DataSource = petList;
+        }
+
+        public static PetView GetInstance(Form parentContainer)
+        {
+            if (instance is null || instance.IsDisposed)
+            {
+                instance = new PetView
+                {
+                    MdiParent = parentContainer,
+                    FormBorderStyle = FormBorderStyle.None,
+                    Dock = DockStyle.Fill
+                };
+            }
+            else
+            {
+                if (instance.WindowState == FormWindowState.Minimized)
+                    instance.WindowState = FormWindowState.Normal;
+                instance.BringToFront();
+            }
+            return instance;
         }
     }
 }
